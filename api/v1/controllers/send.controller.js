@@ -13,28 +13,20 @@ import { validateSend } from "./validation.controller.js";
 let response_error;
 
 const convertTimestamp = (timestamp) => {
-  const dateDate = new Date(timestamp * 1000);
-  const months = [
-    "Januari",
-    "Februari",
-    "Maret",
-    "April",
-    "Mei",
-    "Juni",
-    "Juli",
-    "Agustus",
-    "September",
-    "Oktober",
-    "November",
-    "Desember",
-  ];
-  const year = dateDate.getFullYear();
-  const month = months[dateDate.getMonth()];
-  const date = dateDate.getDate();
-  const hour = dateDate.getHours();
-  const min = dateDate.getMinutes();
-  const sec = dateDate.getSeconds();
-  return `${date} ${month} ${year} - ${hour}:${min}:${sec}`;
+  const jakartaTimezone = "Asia/Jakarta";
+  const jakartaDate = new Date(timestamp);
+  const jakartaOptions = {
+    timeZone: jakartaTimezone,
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
+
+  const formattedDate = jakartaDate.toLocaleString("id-ID", jakartaOptions);
+  return `${formattedDate} WIB`;
 };
 
 const send = async (req, res) => {
