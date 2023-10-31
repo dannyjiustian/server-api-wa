@@ -2,7 +2,11 @@
  * English: imports the modules used
  * Indonesian: mengimpor modul yang digunakan
  */
-import { delay, targetNumber } from "../configs/server.config.js";
+import {
+  delay,
+  targetNumberOne,
+  targetNumberTwo,
+} from "../configs/server.config.js";
 import {
   responseServer200,
   responseServer500,
@@ -40,8 +44,13 @@ const send = async (req, res) => {
     try {
       const { from, message, location, timestamp, ip, browser } = req.body;
       await delay(2500);
-      await sock.sendMessage(targetNumber, {
-        text: `Mendapatkan Harapan Baru Untuk Kamu\n\nDari: *${from}*\nHarapan: *${message}*\nTanggal: *${convertTimestamp(
+      await sock.sendMessage(targetNumberOne, {
+        text: `Mendapatkan Whishs Untuk Kamu\n\nDari: *${from}*\nHarapan: *${message}*\nTanggal: *${convertTimestamp(
+          timestamp
+        )}*\nLokasi: *${location}*\nIP: *${ip}*\nBrowser: *${browser}*`,
+      });
+      await sock.sendMessage(targetNumberTwo, {
+        text: `Mendapatkan Whishs Untuk Kamu\n\nDari: *${from}*\nHarapan: *${message}*\nTanggal: *${convertTimestamp(
           timestamp
         )}*\nLokasi: *${location}*\nIP: *${ip}*\nBrowser: *${browser}*`,
       });
