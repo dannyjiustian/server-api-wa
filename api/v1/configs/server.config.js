@@ -25,7 +25,8 @@ dotenv.config();
 const typeDevelop = process.env.APP_LOCAL || "local";
 const corsOriginServer = process.env.CORS_SERVER_PRODUCTION || "*";
 const baseURL = process.env.BASE_URL_API_VERSION || "v1";
-const targetNumber = process.env.TARGET_NUMBER || "628123456789@s.whatsapp.net";
+const targetNumberOne = process.env.TARGET_NUMBER_1 || "628123456789@s.whatsapp.net";
+const targetNumberTwo = process.env.TARGET_NUMBER_2 || "628123456789@s.whatsapp.net";
 
 /**
  * English: add-on configuration
@@ -89,7 +90,8 @@ export {
   portServerConfig,
   corsServerConfig,
   notFound,
-  targetNumber,
+  targetNumberOne,
+  targetNumberTwo,
   fs,
   deleteAllFilesInDir,
   delay,
